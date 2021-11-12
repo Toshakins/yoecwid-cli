@@ -20,6 +20,6 @@ jobs:
       - name: 🤯 Build binaries
         run: ./build.sh
       - name: commit built changes
-        run: git add ./bin/ && git commit -m "build binaries for $GITHUB_SHA"
+        run: git add ./bin/ && git commit -m "build binaries for $GITHUB_SHA" || exit 0;
       - name: push commited binaries
         run: git push origin master
