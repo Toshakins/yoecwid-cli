@@ -2,6 +2,7 @@ name: Go lang
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
     
 jobs:
   Crossbuild:
