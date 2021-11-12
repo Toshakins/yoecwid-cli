@@ -1,4 +1,4 @@
-name: Go lang
+name: crossbuilder
 on:
   push:
     branches: [ master ]
@@ -15,7 +15,9 @@ jobs:
           go-version: 1.17
       - name: 🤯 Build binaries
         run: ./build.sh
+      - name: configure git
+        run: git remote set-url origin https://$GITHUB_ACTOR:$GTIHUB_TOKEN@github.com/Toshakins/yoecwid-cli.git 
       - name: commit built changes
-        run: git commit -m "build binaries for $GITHUB_SHA"
+        run: git add ./bin/ && git commit -m "build binaries for $GITHUB_SHA"
       - name: push commited binaries
         run: git push origin master
