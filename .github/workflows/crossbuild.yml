@@ -13,12 +13,12 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
+      - name: 🤬 configure git
+        env:
+          AUTO_COMMIT_EMAIL: ${{ secrets.AUTO_COMMIT_EMAIL }}
+        run: git remote set-url origin https://$GITHUB_ACTOR:$GTIHUB_TOKEN@github.com/Toshakins/yoecwid-cli.git && git config user.name Toshakins && git config user.email $AUTO_COMMIT_EMAIL
       - name: 🤯 Build binaries
         run: ./build.sh
-      - name: configure git
-        env:
-          auto_commit_email: ${{ secrets.AUTO_COMMIT_EMAIL }}
-        run: git remote set-url origin https://$GITHUB_ACTOR:$GTIHUB_TOKEN@github.com/Toshakins/yoecwid-cli.git && git config user.name Toshakins && git config user.email $AUTO_COMMIT_EMAIL
       - name: commit built changes
         run: git add ./bin/ && git commit -m "build binaries for $GITHUB_SHA"
       - name: push commited binaries
