@@ -1,6 +1,6 @@
 # yoecwid-cli
 
-Tool to create a store for live preview usage.
+Tool to create a store for the template live preview.
 
 Outputs the id of a created store and owner's email.
 
