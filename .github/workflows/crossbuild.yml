@@ -1,0 +1,21 @@
+name: Go lang
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+    
+jobs:
+  Crossbuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 🤪 Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+      - name: 🤯 Build binaries
+        run: ./build.sh
+      - name: commit built changes
+        run: git commit -m "build binaries for $GITHUB_SHA"
+      - name: push commited binaries
+        run: git push origin master
