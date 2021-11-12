@@ -1,4 +1,4 @@
-name: crossbuilder
+name: crossbuild
 on:
   push:
     branches: [ master ]
